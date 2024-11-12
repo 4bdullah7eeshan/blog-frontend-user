@@ -1,3 +1,5 @@
+// Sign Up
+
 const signupForm = document.getElementById("signupForm");
 
 signupForm.addEventListener("submit", async (event) => {
