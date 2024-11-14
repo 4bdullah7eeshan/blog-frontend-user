@@ -117,7 +117,7 @@ async function deleteComment(commentId) {
         if (response.ok) {
             loadPostAndComments(); // Reload to reflect deletion
         } else {
-            alert("Failed to delete comment.");
+            alert("You are not authorized to delete this comment.");
         }
     } catch (error) {
         console.error("Error deleting comment:", error);

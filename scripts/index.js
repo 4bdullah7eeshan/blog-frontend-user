@@ -15,7 +15,12 @@ logoutBtn.addEventListener("click", async () => {
         if (response.ok) {
             localStorage.removeItem("token");
             alert("You have been logged out.");
-            window.location.href = "./pages/signin.html";
+
+            const currentPath = window.location.pathname;
+            console.log(currentPath);
+            const isHomePage = currentPath.endsWith("/index.html"); 
+            const redirectPath = isHomePage ? "./index.html" : "../index.html";
+            window.location.href = redirectPath;
         } else {
             const errorData = await response.json();
             alert(`Error: ${errorData.message}`);
