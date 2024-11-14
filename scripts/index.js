@@ -4,7 +4,7 @@ const logoutBtn = document.getElementById("logoutBtn");
 
 logoutBtn.addEventListener("click", async () => {
     try {
-        const response = await fetch("http://localhost:3000/auth/logout", {
+        const response = await fetch("https://blog-api-f102.onrender.com/auth/logout", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

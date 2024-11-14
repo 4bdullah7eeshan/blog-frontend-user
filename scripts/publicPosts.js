@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const postsContainer = document.getElementById("posts");
 
     try {
-        const response = await fetch("http://localhost:3000/posts"); // Fetch all posts
+        const response = await fetch("https://blog-api-f102.onrender.com/posts"); // Fetch all posts
         const posts = await response.json();
 
         if (response.ok) {

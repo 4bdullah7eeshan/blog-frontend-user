@@ -14,7 +14,7 @@ const formatDate = (dateString) => {
 async function loadPostAndComments() {
     try {
         // Fetch post details
-        const response = await fetch(`http://localhost:3000/posts/${postId}`);
+        const response = await fetch(`https://blog-api-f102.onrender.com/posts/${postId}`);
         const post = await response.json();
 
         // Render post details
@@ -86,7 +86,7 @@ async function addComment(event) {
     const content = document.getElementById("commentContent").value;
 
     try {
-        const response = await fetch(`http://localhost:3000/posts/${postId}/comments`, {
+        const response = await fetch(`https://blog-api-f102.onrender.com/posts/${postId}/comments`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -107,7 +107,7 @@ async function addComment(event) {
 
 async function deleteComment(commentId) {
     try {
-        const response = await fetch(`http://localhost:3000/posts/${postId}/comments/${commentId}`, {
+        const response = await fetch(`https://blog-api-f102.onrender.com/posts/${postId}/comments/${commentId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Bearer ${token}`
