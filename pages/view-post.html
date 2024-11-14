@@ -7,6 +7,7 @@
     <title>View Post</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <script src="../scripts/index.js" defer></script>
 </head>
@@ -43,6 +44,16 @@
 
     <div id="postContainer"></div>
     <div id="commentsContainer"></div>
+
+    <footer class="container-fluid py-3 bg-dark text-white">
+        <div class="d-flex justify-content-between align-items-center">
+            <p class="mb-0">Copyright &copy; Abdullah Zeeshan 2024</p>
+    
+            <a href="https://github.com/4bdullah7eeshan" target="_blank" rel="noopener noreferrer" class="text-white">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </footer>
 
     <script>
         const postId = new URLSearchParams(window.location.search).get('id');
