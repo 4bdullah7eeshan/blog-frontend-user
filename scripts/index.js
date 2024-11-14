@@ -25,3 +25,21 @@ logoutBtn.addEventListener("click", async () => {
         alert("An error occurred while logging out. Please try again later.");
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("token");
+    const loginLink = document.getElementById("loginLink");
+    const signupLink = document.getElementById("signupLink");
+    const logoutBtn = document.getElementById("logoutBtn");
+  
+    if (token) {
+      loginLink.style.display = "none";
+      signupLink.style.display = "none";
+      logoutBtn.style.display = "block";
+    } else {
+      loginLink.style.display = "block";
+      signupLink.style.display = "block";
+      logoutBtn.style.display = "none";
+    }    
+});
+  
