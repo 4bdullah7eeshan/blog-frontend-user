@@ -9,12 +9,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (response.ok) {
             posts.forEach(post => {
                 const postDiv = document.createElement("div");
-                postDiv.className = "post";
+                postDiv.className = "post col-12 col-md-6 col-lg-4 mb-4";
                 postDiv.innerHTML = `
-                    <h2>${post.title}</h2>
-                    <p>${post.content}</p>
-                    <small>Author: ${post.author.username}</small>
-                    <button onclick="window.location.href='pages/view-post.html?id=${post.id}'">Read More</button>
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">${post.title}</h5>
+                            <p class="card-text">${post.content.slice(0, 100)}...</p>
+                            <small>Author: ${post.author.username}</small>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary" onclick="window.location.href='pages/view-post.html?id=${post.id}'">Read More</button>
+                        </div>
+                    </div>
                 `;
                 postsContainer.appendChild(postDiv);
             });
