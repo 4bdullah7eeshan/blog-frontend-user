@@ -12,11 +12,11 @@
     <script src="../scripts/index.js" defer></script>
     <script src="../scripts/signup.js" defer></script>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="./index.html">
-            Blog
+            <i class="fa-solid fa-blog"></i> Blog
           </a>
     
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,16 +43,19 @@
         </div>
     </nav>
 
-    <header>
-        <h1>
-            Sign Up
-        </h1>
-    </header>
-    <form action="" id="signupForm">
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button type="submit">Sign Up</button>
-    </form>
+    <main class="flex-grow-1">
+        <header>
+            <h1>
+                Sign Up
+            </h1>
+        </header>
+        <form action="" id="signupForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+    </main>
+    
 
     <footer class="container-fluid py-3 bg-dark text-white">
         <div class="d-flex justify-content-between align-items-center">
