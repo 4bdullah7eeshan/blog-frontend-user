@@ -7,23 +7,48 @@ document.addEventListener("DOMContentLoaded", async () => {
         const posts = await response.json();
 
         if (response.ok) {
+            // Create the table element
+            const table = document.createElement("table");
+            table.className = "table table-hover table-striped table-bordered";
+
+            // Create the table header
+            table.innerHTML = `
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Content</th>
+                                    <th>Author</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                        `;
+
+            // Create the table body
+            const tbody = document.createElement("tbody");
+
+            // Populate each row with post data
             posts.forEach(post => {
-                const postDiv = document.createElement("div");
-                postDiv.className = "post col-12 col-md-6 col-lg-4 mb-4";
-                postDiv.innerHTML = `
-                    <div class="card h-100 text-bg-dark border-dark">
-                        <div class="card-body">
-                            <h5 class="card-title">${post.title}</h5>
-                            <p class="card-text">${post.content.slice(0, 100)}...</p>
-                            <small>AUTHOR: ${post.author.username}</small>
-                        </div>
-                        <div class="card-footer mx-auto">
-                            <button class="btn btn-secondary" onclick="window.location.href='pages/view-post.html?id=${post.id}'">Read More</button>
-                        </div>
-                    </div>
-                `;
-                postsContainer.appendChild(postDiv);
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                                <td>${post.title}</td>
+                                <td>${post.content.slice(0, 50)}...</td>
+                                <td>${post.author.username}</td>
+                                <td>
+                                    <button class="btn btn-secondary btn-sm" onclick="window.location.href='pages/view-post.html?id=${post.id}'">
+                                        Read More
+                                    </button>
+                                </td>
+                            `;
+
+                tbody.appendChild(row);
             });
+
+            // Append tbody to the table
+            table.appendChild(tbody);
+
+            // Append table to the posts container
+            postsContainer.appendChild(table);
         } else {
             alert("Failed to fetch posts.");
         }
