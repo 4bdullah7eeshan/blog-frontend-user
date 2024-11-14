@@ -12,7 +12,7 @@
     <script src="../scripts/index.js" defer></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="./index.html">
             <i class="fa-solid fa-blog"></i> Blog
@@ -43,8 +43,8 @@
     </nav>
 
     <main class="flex-grow-1">
-        <div id="postContainer"></div>
-        <div id="commentsContainer"></div>
+        <div id="postContainer" class="mb-5"></div>
+        <div id="commentsContainer" class="px-5 mb-5"></div>
     </main>
 
 
@@ -70,31 +70,49 @@
 
                 // Render post details
                 document.getElementById('postContainer').innerHTML = `
-                    <h2>${post.title}</h2>
-                    <p>${post.content}</p>
-                    <small>Author: ${post.author.username}</small>
+                    <div class="bg-dark text-white p-5">
+                        <h1>${post.title}</h1>
+                        <p>Author: <strong>${post.author.username}</strong></p>
+                    </div>
+                    <div class="px-5 py-3">
+                        <small>AUTHOR</small>
+                        <p>${post.author.username}</p>
+                        
+                    </div>
+            
+                    <div class="post-content mt-1 px-5 mb-1">
+                        <p class="lead mb-2">${post.content}</p>
+                    </div>
+
+                    
                 `;
 
                 // Render comments
                 const commentsHTML = post.comments.map(comment => `
-                    <div class="comment">
+                    <div class="comment card mb-3 p-3 bg-light">
                         <p>${comment.content}</p>
-                        <small>By: ${comment.username}</small>
+                        <small class="text-muted">By: ${comment.username}</small>
                         ${
                             token && comment.userId === post.username
-                                ? `<button onclick="deleteComment('${comment.id}')">Delete</button>`
+                                ? `<button class="btn btn-danger btn-sm mt-2" onclick="deleteComment('${comment.id}')">Delete</button>`
                                 : ''
                         }
                     </div>
                 `).join('');
-                document.getElementById('commentsContainer').innerHTML = `<h3>Comments:</h3>${commentsHTML}`;
+                document.getElementById('commentsContainer').innerHTML = `
+                    <hr />
+                    <h3>Comments:</h3>
+                    <div class="comments-list">${commentsHTML}</div>
+                `;
 
                 // If user is signed in, show the comment form
                 if (token) {
                     document.getElementById('commentsContainer').innerHTML += `
-                        <form id="addCommentForm" onsubmit="addComment(event)">
-                            <textarea id="commentContent" placeholder="Add a comment"></textarea>
-                            <button type="submit">Post Comment</button>
+                        <form id="addCommentForm" onsubmit="addComment(event)" class="mt-4">
+                            <div class="mb-3">
+                                <textarea id="commentContent" class="form-control" placeholder="Add a comment" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Post Comment</button>
                         </form>
                     `;
                 }
