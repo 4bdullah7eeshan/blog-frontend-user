@@ -1,6 +1,16 @@
 const postId = new URLSearchParams(window.location.search).get('id');
 const token = localStorage.getItem('token'); // To check if user is signed in
 
+const formatDate = (dateString) => {
+    const date = new Date(dateString);
+
+    return date.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+};
+
 async function loadPostAndComments() {
     try {
         // Fetch post details
@@ -12,9 +22,16 @@ async function loadPostAndComments() {
                     <div class="bg-dark text-white p-5">
                         <h1 class="display-3">${post.title}</h1>
                     </div>
-                    <div class="px-5 py-3">
-                        <small>AUTHOR</small>
-                        <p>${post.author.username}</p>
+                    <div class="px-5 py-3 d-flex justify-content-between">
+                        <div>
+                            <small>AUTHOR</small>
+                            <p>${post.author.username}</p>
+                        </div>
+
+                        <div>
+                            <small>DATE</small>
+                            <p>${formatDate(post.createdAt)}</p>
+                        </div>
                         
                     </div>
             
@@ -30,8 +47,8 @@ async function loadPostAndComments() {
                     <div class="comment card mb-3 p-3 bg-light">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
+                                <p class="text-muted"><strong>${comment.username}</strong>, <em>${formatDate(comment.createdAt)}</em></p>
                                 <p class="mb-1">${comment.content}</p>
-                                <small class="text-muted">By: ${comment.username}</small>
                             </div>
                             ${token && comment.userId === post.username
                 ? `<button class="btn btn-danger btn-sm" onclick="deleteComment('${comment.id}')"><i class="bi bi-trash"></i></button>`
