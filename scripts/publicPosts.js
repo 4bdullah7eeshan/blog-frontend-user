@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <h2>${post.title}</h2>
                     <p>${post.content}</p>
                     <small>Author: ${post.author.username}</small>
-                    <button onclick="viewPost('${post.id}')">Read More</button>
+                    <button onclick="window.location.href='pages/view-post.html?id=${post.id}'">Read More</button>
                 `;
                 postsContainer.appendChild(postDiv);
             });
