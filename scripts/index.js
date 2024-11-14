@@ -14,7 +14,6 @@ logoutBtn.addEventListener("click", async () => {
 
         if (response.ok) {
             localStorage.removeItem("token");
-            alert("You have been logged out.");
 
             const currentPath = window.location.pathname;
             console.log(currentPath);

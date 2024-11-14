@@ -18,7 +18,6 @@ signinForm.addEventListener("submit", async (event) => {
 
         if (response.ok) {
             localStorage.setItem('token', data.token);
-            alert('Sign-in successful!');
             window.location.href = '../index.html';
         } else {
             document.getElementById('error-message').textContent = data.message || 'An error occurred during sign-in.';
